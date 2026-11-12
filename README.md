@@ -1,4 +1,4 @@
-# Excelsior-Scholarship-DiD
+# Replication Assignment: A Difference in Difference Analysis of New York's Excelsior Scholarship 
 Dennis Espejo 
 <br>Applied Econometrics 1
 
