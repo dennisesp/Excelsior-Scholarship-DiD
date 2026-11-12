@@ -1,6 +1,6 @@
 # Excelsior-Scholarship-DiD
 Dennis Espejo 
-\Applied Econometrics 1
+<br>Applied Econometrics 1
 
 
 ## The Original Study
