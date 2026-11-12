@@ -1,8 +1,7 @@
 # Excelsior-Scholarship-DiD
 
 
-<!--The Reference Study-->
-## 
+## The Original Study
 
 ## My Replication 
 
