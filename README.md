@@ -1,9 +1,11 @@
 # Excelsior-Scholarship-DiD
 Dennis Espejo 
-Applied Econometrics 1
+\Applied Econometrics 1
 
 
 ## The Original Study
+
+The original study that my replication is based off of is a 2026 dissertation by, 
 
 ## My Replication 
 
