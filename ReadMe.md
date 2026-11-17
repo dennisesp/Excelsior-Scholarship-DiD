@@ -26,7 +26,7 @@ I pulled the data and completed the cleaning process in my data cleaning noteboo
 
 For the analysis, my unit of observation is an **institution-year**. New York public institutions make up the treatment group, and Pennsylvania public institutions make up the comparison group. I use 2012–2019, with Excelsior introduced in 2017.
 
-My final sample has **111 public institutions**, including **74 in New York and 37 in Pennsylvania**, observed over eight years. This gives me **888 institution-year observations**. Howard's public-institution sample contains 125 institutions, including 51 in Pennsylvania.
+My final sample has **111 public institutions**, including **74 in New York and 37 in Pennsylvania**, observed over eight years (Different than Howard because he had 125 institutions total, and 51 in Pennsylvania).
 
 ### Main Variables
 
@@ -57,9 +57,7 @@ I document my cleaning process in [`Data_cleaning.ipynb`](Data_cleaning.ipynb). 
 
 ### Why I Excluded Penn State
 
-Beginning in 2019, Penn State changed how it reported campus enrollment data in IPEDS. Howard obtained supplemental campus-level data directly from Penn State, but I did not have access to those records.
-
-When I checked my 2019 Pell Grant file, the Penn State campus counts were missing. My initial aggregation also turned those missing counts into zero. I chose to remove all Penn State campuses so I could keep a consistent set of institutions across years without filling in missing values.
+Beginning in 2019, Penn State changed how it reported campus enrollment data in IPEDS. Howard obtained supplemental campus-level data directly from Penn State, but I did not have access to those records. So I chose to remove all Penn State campuses so I could keep a consistent set of institutions across years without filling in missing values.
 
 This is the exclusion I use for my final sample:
 
@@ -84,7 +82,7 @@ I first plot average enrollment in New York and Pennsylvania between 2012 and 20
 
 For the statistical test, I interact the New York indicator with a linear time trend and include institution and year fixed effects. I run the test with treatment beginning in both 2017 and 2018.
 
-None of my pretreatment slope tests were statistically significant at the 5% level. I therefore fail to reject the null hypothesis that the pretreatment slopes are equal. This provides some support for the parallel trends assumption, although it does not establish that the assumption holds.
+None of my pretreatment slope tests were statistically significant at the 5% level. I therefore fail to reject the null hypothesis that the pretreatment slopes are equal, which provides some support for the parallel trends assumption. 
 
 ### 2. Difference-in-Differences
 
@@ -112,7 +110,7 @@ $$
 
 I use the estimates from 2012–2015 to examine pretreatment differences and the estimates from 2017–2019 to examine changes following Excelsior's introduction. I also plot the coefficients with 95% confidence intervals.
 
-The event-study models reported below include institution and year fixed effects and institution-clustered standard errors. They do not include the additional tuition and unemployment covariates.
+The event-study models reported below include institution and year fixed effects and institution-clustered standard errors (they don't include the additional tuition and unemployment covariates.)
 
 ## Main Findings
 
