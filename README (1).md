@@ -6,9 +6,8 @@
 
 New York introduced the Excelsior Scholarship in 2017 to help eligible residents cover tuition at public colleges and universities. In his dissertation, Howard (2026) examines whether enrollment at New York institutions changed following the program's introduction, using Pennsylvania as a comparison state.
 
-For this project, I recreate the dissertation's main public-institution findings using institution-level data from 2012 through 2019. I first construct a longitudinal dataset from IPEDS and Bureau of Labor Statistics (BLS) data. I then estimate difference-in-differences (DiD) and event-study models to examine changes in enrollment following Excelsior's introduction.
+For this project, I recreate the dissertation's main public-institution findings using institution-level data from 2012 through 2019. However, I had limited access to data compared to the original publication where I couldn't 1. access Penn State data or 2. Access student migration trends from IPEDS. Therefore, this analysis has some slight deviations from Howard (2026) but the core methodological component is still intact. 
 
-This is a **partial, modified replication**. I focus on two enrollment outcomes and exclude Penn State campuses because their 2019 Pell Grant counts were missing from the IPEDS files I downloaded. This changes the comparison group relative to Howard's original sample.
 
 ## Research questions
 
@@ -17,6 +16,7 @@ This is a **partial, modified replication**. I focus on two enrollment outcomes 
 3. Do the estimated effects differ when I use a single post-treatment DiD coefficient or year-specific event-study coefficients?
 
 ## Data
+
 
 | Source | Variables used | Coverage |
 | --- | --- | --- |
