@@ -4,25 +4,23 @@
 
 ## Project overview
 
-New York introduced the Excelsior Scholarship in 2017 to help eligible residents cover tuition at public colleges and universities. In his dissertation, Howard (2026) examines whether enrollment at New York institutions changed following the program's introduction, using Pennsylvania as a comparison state.
+New York introduced the Excelsior Scholarship in 2017 to help eligible residents cover tuition at public colleges and universities. In his dissertation, Howard (2026) examines whether enrollment at New York institutions changed following the program's introduction, using Pennsylvania as a comparison state. 
 
-For this project, I recreate the dissertation's main public-institution findings using institution-level data from 2012 through 2019. However, I had limited access to data compared to the original publication where I couldn't 1. access Penn State data or 2. Access student migration trends from IPEDS. Therefore, this analysis has some slight deviations from Howard (2026) but the core methodological component is still intact. 
+For this project, I recreate the dissertation's main public-institution findings using institution-level data from 2012 through 2019. However, I had limited access to data compared to the original publication where I couldn't 1. access Penn State data or 2. Access student migration trends from the Integrated Post-Secondary Education Data System (IPEDS). Therefore, this analysis has some slight deviations from Howard (2026) but the core methodological component is still intact. 
 
-
-## Research questions
-
-1. Did first-time, full-time undergraduate enrollment change at New York public institutions following the introduction of the Excelsior Scholarship?
-2. Did first-time, full-time enrollment among Pell Grant recipients change over the same period?
-3. Do the estimated effects differ when I use a single post-treatment DiD coefficient or year-specific event-study coefficients?
 
 ## Data
 
+The data I pulled as well as the data cleaning proccess can all be found in the Data Cleaning Folder. Where I have three seperate sub-folders including.
+1. IPEDS Data
+2. Buereau of Labor Statistics (BLS) Data
+3. Data sourced from an OpenDataPhilly user, that provided all U.S. county's names and FIPS Codes, to merge FIPS codes to the provided IPEDS county names (for some reason IPEDS kept providing county names, instead of actual FIPS codes).
 
 | Source | Variables used | Coverage |
 | --- | --- | --- |
 | [IPEDS, National Center for Education Statistics](https://nces.ed.gov/ipeds/use-the-data) | Institution identifiers, enrollment counts, Pell Grant recipient counts, tuition and fees, institution control, and institutional location | Fall 2012–2019 |
 | [Bureau of Labor Statistics, Local Area Unemployment Statistics](https://www.bls.gov/lau/) | County unemployment rates | 2011–2018, lagged one year |
-| County FIPS crosswalk | County names and five-digit FIPS codes used to merge the BLS data | Matched to institution locations |
+| [Open Data User] U.S. County FIPS Data| County names and five-digit FIPS codes used to merge the BLS data | Matched to institution locations |
 
 **Unit of analysis:** Institution-year.  
 **Treatment group:** Public institutions in New York.  
@@ -45,7 +43,7 @@ The final sample used for the results reported below contains **111 public insti
 | `Published in-state tuition and fees` | Tuition measure used to construct `ln_tuition` in adjusted DiD models |
 | `unemp_lag` | County unemployment rate lagged one year |
 
-The cleaning notebook also brings in race- and gender-disaggregated enrollment counts. I retain these in the broader panel, although they are outside the scope of the main models reported here. The IPEDS `Level of student` field should be checked when recreating the original enrollment extracts to confirm the intended cohort.
+Above, you'll find the main variables I'm working with in the analysis python notebook. 
 
 ## Data cleaning
 
@@ -53,7 +51,7 @@ The cleaning workflow is documented in [`Data_cleaning.ipynb`](Data_cleaning.ipy
 
 1. **Merge annual IPEDS data.** For each year, merge the Pell Grant, race/gender enrollment, and tuition files by `unitid`. Resolve duplicate columns and standardize variable names across years.
 2. **Create the institution-year panel.** Stack the cleaned annual datasets and add `fall_year`.
-3. **Add county identifiers.** Match IPEDS county names to county FIPS codes through a county crosswalk.
+3. **Add county identifiers.** Match IPEDS county names to county FIPS codes through a county data csv sourced from OpenDataPhilly (which provides county codes of all U.S. counties).
 4. **Merge unemployment data.** Clean the BLS annual county files, build five-digit FIPS codes, and merge unemployment from the preceding calendar year (`unemp_year = fall_year - 1`).
 5. **Identify public institutions.** Use IPEDS institutional control data to restrict the analysis to public institutions.
 6. **Apply institutional exclusions.** Remove specialty institutions using the dissertation's exclusion list and exclude all Pennsylvania State University campuses for this modified replication.
@@ -61,7 +59,7 @@ The cleaning workflow is documented in [`Data_cleaning.ipynb`](Data_cleaning.ipy
 
 ### Penn State data limitation
 
-The 2019 IPEDS extract contains missing Pell Grant recipient counts for Penn State campuses. An earlier version of my cleaning code aggregated Penn State campus counts; summing groups with only missing observations could turn missing values into zeros. I subsequently chose to **exclude all Penn State campuses** to keep a consistent analytic sample without imputing those counts.
+In 2019 Penn state began reporting all information across satellite campuses under one name. Because I didn't have the disagregated data from Penn state for this year, and all other years only included one or the other.  I subsequently chose to **exclude all Penn State campuses** to keep a consistent analytic sample without imputing those counts.
 
 **Before reproducing the results below, make sure the Penn State aggregation cell in `Data_cleaning.ipynb` has been replaced with the exclusion used in the final analysis:**
 
