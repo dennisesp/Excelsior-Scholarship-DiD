@@ -12,7 +12,7 @@ I had two data limitations compared to Howard's original study. I could not obta
 
 ## Data
 
-I pulled the data and completed the cleaning process in my data cleaning notebook. I organized the raw files into three groups:
+I pulled the data and completed the cleaning process in my data cleaning notebook, found in the folder labeled "Data Cleaning" . I organized the raw files into three groups:
 
 1. **IPEDS data:** Enrollment, Pell Grant recipients, tuition and fees, and institutional characteristics from the Integrated Postsecondary Education Data System.
 2. **Bureau of Labor Statistics (BLS) data:** County-level unemployment rates.
@@ -45,7 +45,7 @@ These are the main variables I use in the analysis notebook.
 
 ## Data Cleaning
 
-I document my cleaning process in [`Data_cleaning.ipynb`](Data_cleaning.ipynb). I started with separate annual files and worked toward one institution-year panel.
+My cleaning process is in full detail in the Data cleaning Python notebook tittled "Data_cleaning.ipynb"). Where I started with separate annual IPEDS files and BLS data and worked toward one institution-year panel.
 
 1. **Merging IPEDS files.** I merged the annual Pell Grant, race and gender enrollment, and tuition files using `unitid`. I also standardized the column names across years.
 2. **Creating the panel.** I combined the annual datasets into one file and added `fall_year`.
@@ -74,7 +74,7 @@ The exclusion changes the Pennsylvania comparison group, so my results will not 
 
 ## Analysis
 
-I document the analysis in [`Excelsior_Replication_Step_by_Step.ipynb`](Excelsior_Replication_Step_by_Step.ipynb). I follow Howard's main public-institution specifications and compare my results to Tables 10–13 in his dissertation.
+My analysis can be found in [`Excelsior_Replication_Step_by_Step.ipynb`](Excelsior_Replication_Step_by_Step.ipynb). In this Python notebook, I  perform Howards' DiD and Event study, and compare my results to his tables 10-13. 
 
 ### 1. Checking Parallel Trends
 
